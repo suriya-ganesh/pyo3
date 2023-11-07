@@ -178,6 +178,7 @@ impl SelfType {
                             .map_err(::std::convert::Into::<_pyo3::PyErr>::into)
                             .and_then(
                                 #[allow(clippy::useless_conversion)]  // In case slf is PyCell<Self>
+                                #[allow(unknown_lints, clippy::unnecessary_fallible_conversions)]  // In case slf is Py<Self>
                                 |cell| ::std::convert::TryFrom::try_from(cell).map_err(::std::convert::Into::into)
                             )
 
